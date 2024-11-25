@@ -78,9 +78,10 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  animation: fade-in 0.3s ease-in-out forwards;
 
   &-body {
-    margin: 20px 0;
+    margin: 1.25rem 0;
     overflow: auto;
   }
 
@@ -110,6 +111,15 @@ export default defineComponent({
       background-color: gray;
       pointer-events: none;
     }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

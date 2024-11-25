@@ -1,16 +1,23 @@
 <template>
-  <component :is="icon" class="fill-current" />
+  <component :is="icon" />
 </template>
 
-<script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
+<script lang="ts">
+import { defineComponent, defineAsyncComponent } from 'vue'
 
-const props = defineProps({
-  name: {
-    type: String,
-    required: true,
+export default defineComponent({
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+  },
+  setup(props) {
+    const icon = defineAsyncComponent(() => import(`@/icons/${props.name}.svg`))
+
+    return {
+      icon,
+    }
   },
 })
-
-const icon = defineAsyncComponent(() => import(`/src/icons/${props.name}.svg`))
 </script>
